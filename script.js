@@ -26,32 +26,35 @@ form.addEventListener("submit", (e) =>
     {
         lowOrHi.textContent = "Matched";
         lowOrHi.style.color = "Yellow";
-        let lineBreak = document.createElement("br");
-        
-        let resetBtn = document.createElement("button");
-        resetBtn.style.backgroundColor = "Orange";
-        resetBtn.style.color = "white";
-        resetBtn.id = "reset";
-        resetBtn.textContent = "Reset"
-
-        lowOrHi.appendChild(lineBreak);
-        lowOrHi.appendChild(resetBtn);
-
-        resetBtn.addEventListener("click", (e) => {
-            ResetGame();
-        });
+        CreateResetButton();
     }
     else
     {
-        console.log(lastResult.textContent);
         lastResult.textContent = parseInt(lastResult.textContent) - 1;
         lowOrHi.textContent = CheckNumber(guessedInt);
         lowOrHi.style.color = "White";
         previousGuesses.push(guessedInt);
         guesses.textContent = previousGuesses;
     }
-
 });
+
+function CreateResetButton()
+{
+    let lineBreak = document.createElement("br");
+    let resetBtn = document.createElement("button");
+
+    resetBtn.style.backgroundColor = "Orange";
+    resetBtn.style.color = "white";
+    resetBtn.id = "reset";
+    resetBtn.textContent = "Reset";
+
+    lowOrHi.appendChild(lineBreak);
+    lowOrHi.appendChild(resetBtn);
+
+    resetBtn.addEventListener("click", (e) => {
+        ResetGame();
+    });
+}
 
 function GenerateRandomNumber()
 {
